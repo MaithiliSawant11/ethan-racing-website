@@ -83,7 +83,7 @@ Vidyavardhini's Society received an approval from AICTE to start an engineering 
 
   <div className="about-text">
 
-    <h2>ABOUT THE TEAM</h2>
+    <h2>ABOUT TEAM</h2>
 
     <div className="team-columns">
 
@@ -159,45 +159,87 @@ Vidyavardhini's Society received an approval from AICTE to start an engineering 
 </section>
 
 
+{/* SPONSORS */}
 
-      {/* SPONSORS */}
+<section className="sponsors-section" id="sponsors">
 
-      <section className="section" id="sponsors">
+  <h2 className="sponsors-title">OUR SPONSORS</h2>
 
-        <h2 style={{textAlign:"center",marginBottom:"80px",color:"red"}}>
-          SPONSORS
-        </h2>
+  <div className="sponsor-carousel">
 
-        <div className="sponsor-grid">
+    <div className="sponsor-track">
 
-          <div className="sponsor-card"><img src="/sponsors/er1.jpg"/></div>
-          <div className="sponsor-card"><img src="/sponsors/er2.jpg"/></div>
-          <div className="sponsor-card"><img src="/sponsors/er3.jpg"/></div>
-          <div className="sponsor-card"><img src="/sponsors/er4.jpg"/></div>
-          <div className="sponsor-card"><img src="/sponsors/er5.jpg"/></div>
-          <div className="sponsor-card"><img src="/sponsors/er6.jpg"/></div>
-          <div className="sponsor-card"><img src="/sponsors/er8.jpg"/></div>
-          <div className="sponsor-card"><img src="/sponsors/er9.jpg"/></div>
+      <img src="/sponsors/s1.png"/>
+      <img src="/sponsors/s2.png"/>
+      <img src="/sponsors/s3.png"/>
+      <img src="/sponsors/s4.png"/>
+      <img src="/sponsors/s5.png"/>
+      <img src="/sponsors/s6.png"/>
+      <img src="/sponsors/s7.png"/>
+      <img src="/sponsors/s8.png"/>
+      
+      <img src="/sponsors/s9.png"/>
+      <img src="/sponsors/s10.png"/>
+      <img src="/sponsors/s11.png"/>
+      <img src="/sponsors/s12.png"/>
+      <img src="/sponsors/s13.png"/>
+      <img src="/sponsors/s14.png"/>
+      <img src="/sponsors/s15.png"/>
+      <img src="/sponsors/s16.png"/>
+      <img src="/sponsors/s17.png"/>
+      <img src="/sponsors/s18.png"/>
+      <img src="/sponsors/s19.png"/>
+      <img src="/sponsors/s20.png"/>
+      <img src="/sponsors/s21.png"/>
+      <img src="/sponsors/s22.png"/>
+      <img src="/sponsors/s23.png"/>
+      <img src="/sponsors/s24.png"/>
+      <img src="/sponsors/s25.png"/>
+      <img src="/sponsors/s26.png"/>
+      <img src="/sponsors/s27.png"/>
+      <img src="/sponsors/s28.png"/>
+      
+      {/* duplicate for infinite loop */}
 
-        </div>
+      <img src="/sponsors/s1.png"/>
+      <img src="/sponsors/s2.png"/>
+      <img src="/sponsors/s3.png"/>
+      <img src="/sponsors/s4.png"/>
+      <img src="/sponsors/s5.png"/>
+      <img src="/sponsors/s6.png"/>
+      <img src="/sponsors/s7.png"/>
+      <img src="/sponsors/s8.png"/>
+      <img src="/sponsors/s9.png"/>
+      <img src="/sponsors/s10.png"/>
+      <img src="/sponsors/s11.png"/>
+      <img src="/sponsors/s12.png"/>
+      <img src="/sponsors/s13.png"/>
+      <img src="/sponsors/s14.png"/>
+      <img src="/sponsors/s15.png"/>
+      <img src="/sponsors/s16.png"/>
+      <img src="/sponsors/s17.png"/>
+      <img src="/sponsors/s18.png"/>
+      <img src="/sponsors/s19.png"/>
+      <img src="/sponsors/s20.png"/>
+      <img src="/sponsors/s21.png"/>
+      <img src="/sponsors/s22.png"/>
+      <img src="/sponsors/s23.png"/>
+      <img src="/sponsors/s24.png"/>
+      <img src="/sponsors/s25.png"/>
+      <img src="/sponsors/s26.png"/>
+      <img src="/sponsors/s27.png"/>
+      <img src="/sponsors/s28.png"/>
+      
+    </div>
 
-      </section>
+  </div>
 
+</section>
 
+</main>
 
-      {/* FOOTER */}
+  );
 
-      <footer className="footer">
-
-        <h3 style={{letterSpacing:"6px"}}>ETHAN RACING</h3>
-
-        <p>Formula Student Team</p>
-
-        <p>© 2026 Ethan Racing</p>
-
-      </footer>
-
-    </main>
-
-  )
 }
+
+ 

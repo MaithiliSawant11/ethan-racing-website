@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   margin:0;
   background:#000;
@@ -18,24 +22,33 @@ body{
   align-items:center;
   padding:20px 60px;
   z-index:1000;
+  overflow: visible;
 }
 
-.nav-links{
-  display:flex;
-  gap:40px;
-}
-
-.nav-links a{
-  color:white;
-  text-decoration:none;
-  font-size:14px;
-  letter-spacing:2px;
-}
 
 .nav-links a:hover{
   color:#ff0000;
 }
 
+.nav-links a{
+  position:relative;
+}
+
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  bottom:-4px;
+  left:50%;
+  width:0%;
+  height:2px;
+  background:#e10600;
+  transition:.3s;
+  transform:translateX(-50%);
+}
+
+.nav-links a:hover::after{
+  width:100%;
+}
 
 .section{
   padding:140px 60px;
@@ -149,82 +162,301 @@ body{
   line-height:1.7;
 }
 
+/* SPONSORS SECTION */
 
-
-
-
-
-/* SPONSOR GRID */
-
-.sponsor-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:60px;
-  max-width:900px;
-  margin:auto;
+.sponsors-section{
+  background:#000;
+  padding:120px 0;
+  text-align:center;
 }
 
-/* sponsor card */
+.sponsors-title{
+  color:#e10600;
+  font-size:40px;
+  letter-spacing:4px;
+  margin-bottom:60px;
+}
 
-.sponsor-card{
-  background:#0c0c0c;
-  padding:40px;
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+
+/* CAROUSEL */
+
+.sponsor-carousel{
   overflow:hidden;
-
-  opacity:0;
-  transform:translateY(40px);
-  transition:all .6s ease;
-}
-
-.sponsor-card img{
   width:100%;
-  max-width:160px;
-  filter:grayscale(100%);
-  transition:all .4s ease;
 }
 
-/* hover */
+.sponsor-track{
+  display:flex;
+  gap:80px;
+  width:max-content;
+  animation:scrollSponsors 25s linear infinite;
+}
 
-.sponsor-card:hover img{
-  filter:grayscale(0%);
+.sponsor-track img{
+  height:70px;
+  object-fit:contain;
+  filter:grayscale(100%);
+  opacity:.8;
+  transition:.3s;
+}
+
+.sponsor-track img:hover{
+  filter:none;
+  opacity:1;
   transform:scale(1.1);
 }
 
-/* fade animation */
+/* pause on hover */
 
-.sponsor-card.show{
-  opacity:1;
-  transform:translateY(0);
+.sponsor-carousel:hover .sponsor-track{
+  animation-play-state:paused;
 }
 
+
+/* animation */
+
+@keyframes scrollSponsors{
+
+  0%{
+    transform:translateX(0);
+  }
+
+  100%{
+    transform:translateX(-50%);
+  }
+
+}
+
+/* SPONSORS PAGE */
+
+.sponsor-page{
+  background:#050505;
+  min-height:100vh;
+  padding:140px 40px;
+}
+
+.sponsor-container{
+  max-width:1100px;
+  margin:auto;
+  text-align:center;
+}
+
+
+/* PAGE TITLE */
+
+.sponsor-page-title{
+  font-size:48px;
+  color:#e10600;
+  letter-spacing:4px;
+  margin-bottom:10px;
+}
+
+.sponsor-page-subtitle{
+  color:#cccccc;
+  font-size:18px;
+  margin-bottom:100px;
+}
+
+
+/* STACKED HISTORY */
+
+.sponsor-history{
+  display:flex;
+  flex-direction:column;
+  gap:90px;
+}
+
+
+/* ERA CARD */
+
+.sponsor-era{
+  background:#0b0b0b;
+  padding:40px;
+  border-radius:14px;
+
+  border:2px solid #e10600;
+
+  transition:0.35s ease;
+}
+
+
+/* HOVER EFFECT */
+
+.sponsor-era:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 25px rgba(225,6,0,0.4);
+}
+
+
+/* ERA TITLE */
+
+.sponsor-era h2{
+  color:#e10600;
+  font-size:28px;
+  letter-spacing:3px;
+  margin-bottom:30px;
+}
+
+
+/* IMAGE */
+
+.sponsor-era img{
+  width:100%;
+  max-width:1000px;
+  border-radius:10px;
+  transition:0.4s ease;
+}
+
+
+/* IMAGE HOVER */
+
+.sponsor-era img:hover{
+  transform:scale(1.02);
+}
+
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .sponsor-page{
+    padding:100px 20px;
+  }
+
+  .sponsor-era{
+    padding:25px;
+  }
+
+  .sponsor-era h2{
+    font-size:22px;
+  }
+
+}
 
 /* FOOTER */
 
 .footer{
   background:#050505;
-  padding:80px 60px;
+  border-top:2px solid #e10600;
+  margin-top:120px;
+}
+
+.footer-container{
+  max-width:1200px;
+  margin:auto;
+  padding:70px 40px;
+
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:50px;
+}
+
+
+/* BRAND */
+
+.footer-brand h2{
+  color:#e10600;
+  letter-spacing:3px;
+  margin-bottom:15px;
+}
+
+.footer-brand p{
+  color:#ccc;
+  line-height:1.6;
+}
+
+
+/* LINKS */
+
+.footer-links h3,
+.footer-contact h3,
+.footer-social h3{
+  color:#e10600;
+  margin-bottom:18px;
+}
+
+.footer-links ul{
+  list-style:none;
+  padding:0;
+}
+
+.footer-links li{
+  margin-bottom:10px;
+}
+
+.footer-links a{
+  text-decoration:none;
+  color:#ccc;
+  transition:.3s;
+}
+
+.footer-links a:hover{
+  color:#e10600;
+}
+
+
+/* CONTACT */
+
+.footer-contact p{
+  color:#ccc;
+  margin-bottom:8px;
+}
+
+
+/* SOCIAL ICONS */
+
+.social-icons{
+  display:flex;
+  gap:20px;
+  font-size:26px;
+}
+
+/* INSTAGRAM */
+
+.social-icons a:nth-child(1){
+  color:#E1306C;
+}
+
+.social-icons a:nth-child(1):hover{
+  color:#f77737;
+  transform:scale(1.2);
+}
+
+/* LINKEDIN */
+
+.social-icons a:nth-child(2){
+  color:#0A66C2;
+}
+
+.social-icons a:nth-child(2):hover{
+  color:#0e76a8;
+  transform:scale(1.2);
+}
+
+/* YOUTUBE */
+
+.social-icons a:nth-child(3){
+  color:#FF0000;
+}
+
+.social-icons a:nth-child(3):hover{
+  color:#ff4d4d;
+  transform:scale(1.2);
+}
+
+.social-icons a{
+  transition:0.3s;
+}
+/* BOTTOM */
+
+.footer-bottom{
   text-align:center;
-  border-top:1px solid #222;
+  padding:20px;
+  border-top:1px solid rgba(255,255,255,0.08);
 }
 
-.footer p{
-  color:#aaa;
-}
-
-h1{
-  letter-spacing:20px;
-}
-
-h2{
-  letter-spacing:8px;
-}
-
-nav a{
-  letter-spacing:2px;
+.footer-bottom p{
+  color:#777;
   font-size:14px;
 }
 
@@ -333,3 +565,160 @@ nav a{
   color:white;
   opacity:0.85;
 }
+
+/* CARS PAGE */
+
+.cars-page{
+  background:#050505;
+  padding:140px 40px;
+}
+
+.cars-container{
+  max-width:1200px;
+  margin:auto;
+}
+
+.cars-title{
+  text-align:center;
+  font-size:48px;
+  color:#e10600;
+  letter-spacing:4px;
+}
+
+.cars-subtitle{
+  text-align:center;
+  color:#ccc;
+  margin-bottom:100px;
+}
+
+
+/* ERA CARD */
+
+.car-era{
+  margin-bottom:120px;
+  padding:40px;
+  border:2px solid #e10600;
+  border-radius:14px;
+  background:#0b0b0b;
+}
+
+.car-era h2{
+  color:#e10600;
+  letter-spacing:3px;
+}
+
+.car-weight{
+  color:#ccc;
+  margin-bottom:20px;
+}
+
+
+/* HERO IMAGE */
+
+.car-hero{
+  width: 90%;
+  align-items: center;
+  border-radius:10px;
+  margin-bottom:25px;
+  transition:.4s;
+}
+
+.car-hero:hover{
+  transform:scale(1.02);
+}
+
+
+/* GALLERY */
+
+.car-gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:18px;
+  margin-bottom:40px;
+}
+
+.car-gallery img{
+  width:100%;
+  border-radius:8px;
+  transition:.3s;
+}
+
+.car-gallery img:hover{
+  transform:scale(1.05);
+}
+
+
+/* SPECIFICATIONS */
+
+.car-specs{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.spec{
+  background:#111;
+  padding:18px;
+  border-radius:8px;
+}
+
+.spec h4{
+  color:#e10600;
+  margin-bottom:6px;
+}
+
+.spec p{
+  color:#ccc;
+  font-size:14px;
+}
+
+/* DROPDOWN CONTAINER */
+
+.dropdown {
+  position: relative;
+}
+
+/* DROPDOWN TITLE */
+
+.dropdown-title {
+  cursor: pointer;
+}
+
+/* DROPDOWN MENU */
+
+/* .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: black;
+  border: 1px solid red;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  display: none;
+  min-width: 160px;
+  z-index: 1000;
+}
+
+/* ITEMS */
+
+/* .dropdown-menu li {
+  padding: 10px 20px;
+}
+
+.dropdown-menu li a {
+  color: white;
+  text-decoration: none;
+}
+
+/* HOVER EFFECT */
+
+/* .dropdown-menu li:hover {
+  background: #111;
+} */
+
+/* KEEP MENU OPEN */
+/* 
+.dropdown:hover .dropdown-menu {
+  display: block;
+}  */
