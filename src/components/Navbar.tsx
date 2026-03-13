@@ -42,9 +42,19 @@ export default function Navbar() {
 
         <Link href="#team"><Users size={18}/> TEAM</Link>
 
+        
+        <Link href="#achievements"><Users size={18}/> ACHIEVEMENTS</Link>
+
         <Link href="#events"><Calendar size={18}/> EVENTS</Link>
 
         <Link href="/sponsors"><Handshake size={18}/> SPONSORS</Link>
+
+
+        <Link href="/support"><Handshake size={18}/> SUPPORT US</Link>
+{/* <div className="dropdown-menu">
+<a href="/sponsors">Sponsors</a>
+<a href="/crowdfunding">Crowdfunding</a>
+</div> */}
 
         <Link href="#contact"><Mail size={18}/> CONTACT</Link>
 

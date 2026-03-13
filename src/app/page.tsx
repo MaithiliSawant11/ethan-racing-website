@@ -85,9 +85,14 @@ Vidyavardhini's Society received an approval from AICTE to start an engineering 
 
     <h2>ABOUT TEAM</h2>
 
-    <div className="team-columns">
+    <div className="team-info">
 
-      <div className="team-box">
+      <div className="vision">
+
+          {/* <div className="about-images">
+    <img src="/about/team1.png"/>
+  </div> */}
+
 
         <h3>TEAM VISION</h3>
 
