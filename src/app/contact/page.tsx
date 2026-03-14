@@ -103,7 +103,7 @@ required
 
 <textarea
 placeholder="Your Message"
-rows="5"
+rows={5}
 required
 />
 
