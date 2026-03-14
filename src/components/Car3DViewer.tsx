@@ -1,31 +1,31 @@
-"use client"
+// "use client"
 
-import { Canvas } from "@react-three/fiber"
-import { OrbitControls } from "@react-three/drei"
+// import { Canvas } from "@react-three/fiber"
+// import { OrbitControls } from "@react-three/drei"
 
-export default function Car3DViewer() {
+// export default function Car3DViewer() {
 
-  return (
+//   return (
 
-    <div style={{height:"400px"}}>
+//     <div style={{height:"400px"}}>
 
-      <Canvas>
+//       <Canvas>
 
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[2,2,2]} />
+//         <ambientLight intensity={0.5} />
+//         <directionalLight position={[2,2,2]} />
 
-        <mesh rotation={[0.3,0.4,0]}>
+//         <mesh rotation={[0.3,0.4,0]}>
 
-          <boxGeometry args={[2,0.5,1]} />
+//           <boxGeometry args={[2,0.5,1]} />
 
-          <meshStandardMaterial color="red" />
+//           <meshStandardMaterial color="red" />
 
-        </mesh>
+//         </mesh>
 
-        <OrbitControls enableZoom={false} />
+//         <OrbitControls enableZoom={false} />
 
-      </Canvas>
+//       </Canvas>
 
-    </div>
-  )
-}
+//     </div>
+//   )
+// }

@@ -40,7 +40,7 @@ export default function Navbar() {
   </ul>
 </li> */}
 
-        <Link href="#team"><Users size={18}/> TEAM</Link>
+        <Link href="/team"><Users size={18}/> TEAM</Link>
 
         
         <Link href="#achievements"><Users size={18}/> ACHIEVEMENTS</Link>
@@ -56,7 +56,7 @@ export default function Navbar() {
 <a href="/crowdfunding">Crowdfunding</a>
 </div> */}
 
-        <Link href="#contact"><Mail size={18}/> CONTACT</Link>
+        <Link href="/contact"><Mail size={18}/> CONTACT</Link>
 
       </div>
  

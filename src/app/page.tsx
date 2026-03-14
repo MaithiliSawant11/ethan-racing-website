@@ -4,24 +4,23 @@ import Navbar from "../components/Navbar";
 import { useEffect } from "react";
 
 export default function Home(){
+useEffect(()=>{
 
-  useEffect(()=>{
+  const elements=document.querySelectorAll(".about-block, .sponsor-card")
 
-    const cards=document.querySelectorAll(".sponsor-card")
+  const observer=new IntersectionObserver((entries)=>{
 
-    const observer=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("show")
+      }
+    })
 
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add("show")
-        }
-      })
+  },{threshold:0.2})
 
-    },{threshold:0.2})
+  elements.forEach(el=>observer.observe(el))
 
-    cards.forEach(card=>observer.observe(card))
-
-  },[])
+},[])
 
   return(
 
@@ -60,39 +59,35 @@ export default function Home(){
     <div className="about-block">
 
       <div className="about-text">
-        <h2>ABOUT VCET</h2>
+        <h2 className="section-title">ABOUT VCET</h2>
         <p>
         Vidyavardhini means a body committed to enhancement of knowledge. Vidyavardhini was established as registered society in 1970 by late Padmashri H. G. alias Bhausaheb Vartak. Vidyavardhini's College of Engineering & Technology (VCET) is located in Vasai, a suburb of Mumbai, on a sprawling campus spread over an area of 12.27 acres.
-<br></br>
-Vidyavardhini's Society received an approval from AICTE to start an engineering college with effect from 1994. The college is affiliated to Mumbai University which offers a 4 year degree program.VCET has a total 6 branches with a total intake of 420 students including Mechanical Engineering which has been accredited by NBA,New Delhi.VCET is considered to have the best faculty to guide and educate the students with their wide knowledge and experience acquired in their respective field. the college has a workshop space of 4140 sq. ft. and a very well-equiped Machine Shop.
+        <br/>
+        Vidyavardhini's Society received an approval from AICTE to start an engineering college with effect from 1994. The college is affiliated to Mumbai University which offers a 4 year degree program. VCET has a total 6 branches with a total intake of 420 students including Mechanical Engineering which has been accredited by NBA, New Delhi.
         </p>
       </div>
 
       <div className="about-images">
-        <img src="/about/vcet1.png"/>
-      </div>
 
+  <div className="image-card">
+    <img src="/about/vcet1.png" alt="VCET Campus"/>
+  </div>
+
+</div>
     </div>
 
 
     {/* ABOUT TEAM */}
 
-   {/* ABOUT TEAM */}
-
 <div className="about-block reverse">
 
   <div className="about-text">
 
-    <h2>ABOUT TEAM</h2>
+    <h2 className="section-title">ABOUT TEAM</h2>
 
     <div className="team-info">
 
       <div className="vision">
-
-          {/* <div className="about-images">
-    <img src="/about/team1.png"/>
-  </div> */}
-
 
         <h3>TEAM VISION</h3>
 
@@ -101,11 +96,6 @@ Vidyavardhini's Society received an approval from AICTE to start an engineering 
         experience of the student community at Vidyavardhini’s College of Engineering
         and Technology (VCET) by implementing engineering fundamentals within the
         context of building VCET’s own Formula-Style car.
-
-        "Ethan" is a Hebrew word meaning strong, firm, steadfast and safe.
-        True to the name, the team steadily progresses toward building
-        better race cars and improving its performance in Formula Bharat
-        year after year.
         </p>
 
       </div>
@@ -117,14 +107,9 @@ Vidyavardhini's Society received an approval from AICTE to start an engineering 
 
         <p>
         To encourage young minds to take up engineering as a career and set
-        an example for innovation and teamwork.
-
-        The team believes in knowledge sharing and communication between
-        members so that both the car and the team continue to improve each year.
-
-        The goal is to maintain growth and performance while competing
-        among the best Formula Student teams and achieving strong
-        results in Formula Bharat.
+        an example for innovation and teamwork. The team believes in knowledge
+        sharing and communication between members so that both the car and
+        the team continue to improve each year.
         </p>
 
       </div>
@@ -133,30 +118,39 @@ Vidyavardhini's Society received an approval from AICTE to start an engineering 
 
   </div>
 
+  
   <div className="about-images">
-    <img src="/about/team1.png"/>
+
+  <div className="image-card">
+    <img src="/about/team1.png" alt="Team"/>
   </div>
 
 </div>
+
+</div>
+
     {/* FORMULA BHARAT */}
 
     <div className="about-block">
 
       <div className="about-text">
-        <h2>FORMULA BHARAT</h2>
+        <h2 className="section-title">FORMULA BHARAT</h2>
         <p>
-         FORMULA BHARAT is an opportunity for students to design, manufacture , and race , a formula style car. Over 120 teams from various engineering college all over INDIA participate in this competition, this series replicate the FORMULA STUDENT held across the globe including countries like USA, UK, Germany, Italy, Japan and Australia.
-
-
-                        The motive of this competition is to let the participants explain and validate their design, test their driver's abilities and pitch their car to venture capitalists via a presentation, this helps in learning the art of maganement & team work, which are essentail  in the "REAL WORLD".
+         FORMULA BHARAT is an opportunity for students to design, manufacture, and race a formula style car. Over 120 teams from various engineering colleges all over India participate in this competition.
         </p>
       </div>
 
-      <div className="about-images">
-        <img src="/about/fb1.png"/>
-        <img src="/about/fb2.png"/>
-      </div>
+     <div className="about-images">
 
+  <div className="image-card">
+    <img src="/about/fb1.png" alt="Formula Bharat Event"/>
+  </div>
+
+  <div className="image-card">
+    <img src="/about/fb2.png" alt="Formula Bharat Race"/>
+  </div>
+
+</div>
     </div>
 
   </div>
@@ -240,6 +234,7 @@ Vidyavardhini's Society received an approval from AICTE to start an engineering 
   </div>
 
 </section>
+
 
 </main>
 

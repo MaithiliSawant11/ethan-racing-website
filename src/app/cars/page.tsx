@@ -2,11 +2,9 @@
 
 import { useState } from "react"
 import CarSlider from "@/components/CarSlider"
-import Car3DViewer from "@/components/Car3DViewer"
+// import Car3DViewer from "@/components/Car3DViewer"
 
 export default function CarsPage(){
-
-const [sort,setSort] = useState("new")
 
 const cars = [
 
@@ -155,8 +153,8 @@ name:"ER 8.0",
 weight:"265 kg",
 images:[
 "/Cars/ER 8.0/ER8-1.jpg",
-"/Cars/ER 8.0/ER8-1.jpg",
-"/Cars/ER 8.0/ER8-1.jpg"
+"/Cars/ER 8.0/ER8-2.jpg",
+"/Cars/ER 8.0/ER8-3.jpg"
 ],
 specs:[
 ["Chassis","Carbon Reinforced Frame"],
@@ -175,8 +173,8 @@ name:"ER 9.0",
 weight:"260 kg",
 images:[
 "/Cars/ER 9.0/ER9-1.jpg",
-"/Cars/ER 9.0/ER9-1.jpg",
-"/Cars/ER 9.0/ER9-1.jpg"
+"/Cars/ER 9.0/ER9-2.jpg",
+"/Cars/ER 9.0/ER9-3.jpg"
 ],
 specs:[
 ["Chassis","Advanced Lightweight Frame"],
@@ -192,8 +190,10 @@ specs:[
 
 ]
 
+const [sortOrder,setSortOrder]=useState("newest")
+
 const orderedCars =
-sort === "new" ? [...cars].reverse() : cars
+sortOrder === "newest" ? [...cars].reverse() : cars
 
 return(
 
@@ -202,13 +202,31 @@ return(
 <h1 className="cars-title">OUR CARS</h1>
 <p className="cars-subtitle">Evolution of Ethan Racing Machines</p>
 
-<select
-className="cars-sort"
-onChange={(e)=>setSort(e.target.value)}
->
-<option value="new">Newest → Oldest</option>
-<option value="old">Oldest → Newest</option>
-</select>
+<div className="car-filter">
+
+<label className="filter-option">
+<input
+type="radio"
+name="carSort"
+value="newest"
+checked={sortOrder==="newest"}
+onChange={()=>setSortOrder("newest")}
+/>
+Newest First
+</label>
+
+<label className="filter-option">
+<input
+type="radio"
+name="carSort"
+value="oldest"
+checked={sortOrder==="oldest"}
+onChange={()=>setSortOrder("oldest")}
+/>
+Oldest First
+</label>
+
+</div>
 
 <div className="cars-container">
 
@@ -221,7 +239,7 @@ onChange={(e)=>setSort(e.target.value)}
 
 <CarSlider images={car.images}/>
 
-<Car3DViewer />
+{/* <Car3DViewer /> */}
 
 <div className="car-specs">
 

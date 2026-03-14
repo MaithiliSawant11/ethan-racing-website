@@ -8,7 +8,7 @@ export default function Footer() {
   <div className="footer-container">
 
     <div className="footer-logo">
-      <img src="C:/logo.png" alt="Ethan Racing"/>
+      <img src="/logo.png" alt="Ethan Racing"/>
     </div>
 
     <div className="footer-address">
