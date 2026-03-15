@@ -1,73 +1,147 @@
 "use client"
+import Link from "next/link"
 
-export default function SupportPage() {
+import Hero from "@/components/Hero"
 
-  return (
+export default function SupportPage(){
 
-    <div className="support-page">
+const sponsors = [
 
-      {/* HERO SECTION */}
-
-      <section className="support-hero">
-
-        <div className="support-hero-overlay">
-
-          <h1>SUPPORT ETHAN RACING</h1>
-
-          <p>
-            Help us push the limits of engineering and innovation.
-            Your support enables us to design, build and compete
-            in Formula Student competitions.
-          </p>
-
-        </div>
-
-      </section>
+"/sponsors/s1.png",
+"/sponsors/s4.png",
+"/sponsors/s6.png",
+"/sponsors/s12.png",
+"/sponsors/s15.png",
+"/sponsors/s22.png",
+"/sponsors/s28.png",
+"/sponsors/s16.png",
+"/sponsors/s20.png",
+"/sponsors/s10.png"
 
 
-      {/* SUPPORT CONTENT */}
+]
 
-      <section className="support-container">
+return(
 
-        <h2>Why Support Us?</h2>
+<div>
 
-        <p>
-          Ethan Racing represents Vidyavardhini’s College of Engineering and
-          Technology in national level Formula Student competitions. Sponsors
-          help us develop cutting-edge race cars and provide students with
-          real-world engineering experience.
-        </p>
+<Hero
+title="SUPPORT US"
+subtitle="Help Ethan Racing build the next generation Formula Student race car"
+image="/hero_achievements.jpg"
+/>
 
 
-        <div className="support-cards">
+{/* WHY SUPPORT US */}
 
-          <div className="support-card">
-            <h3>Innovation</h3>
-            <p>
-              Support advanced automotive engineering projects and student innovation.
-            </p>
-          </div>
+<section className="support-why">
 
-          <div className="support-card">
-            <h3>Brand Visibility</h3>
-            <p>
-              Get your brand displayed on our race car, merchandise and competitions.
-            </p>
-          </div>
+<h2>Why Support Ethan Racing?</h2>
 
-          <div className="support-card">
-            <h3>Future Engineers</h3>
-            <p>
-              Help train the next generation of engineers and industry leaders.
-            </p>
-          </div>
+<div className="support-reasons">
 
-        </div>
+<div className="reason-card">
+<h3>Innovation</h3>
+<p>
+Your support enables students to design and build a
+high-performance Formula Student race car using
+real engineering principles.
+</p>
+</div>
 
-      </section>
+<div className="reason-card">
+<h3>Future Engineers</h3>
+<p>
+Team Ethan Racing helps students gain hands-on
+experience in automotive design, manufacturing,
+and motorsports engineering.
+</p>
+</div>
 
-    </div>
+<div className="reason-card">
+<h3>Brand Visibility</h3>
+<p>
+Sponsors receive brand exposure through race cars,
+events, competitions, and social media platforms.
+</p>
+</div>
 
-  )
+</div>
+
+</section>
+
+
+
+{/* CROWDFUNDING */}
+
+<section className="crowdfunding">
+
+  <div className="crowdfunding-progress">
+
+<p>Project Goal: ₹3,00,000</p>
+
+<div className="progress-bar">
+<div className="progress-fill"></div>
+</div>
+
+<p className="progress-text">
+₹85,000 raised so far
+</p>
+
+</div>
+
+<h2>Support Our Journey</h2>
+
+<p>
+Building a Formula Student race car requires research,
+manufacturing, and testing. Your contribution helps us
+represent our college in national motorsport competitions.
+</p>
+
+<div className="support-actions">
+
+<Link href="/donate">
+<button className="donate-btn">
+Donate Now
+</button>
+</Link>
+
+
+
+<Link href="/sponsor">
+<button className="sponsor-btn">
+Become a Sponsor
+</button>
+</Link>
+</div>
+
+</section>
+
+
+{/* SPONSORS */}
+
+<section className="sponsor-section">
+
+<h2>Our Sponsors</h2>
+
+<div className="sponsor-grid">
+
+{sponsors.map((logo,index)=>(
+<div className="sponsor-card" key={index}>
+<img src={logo} alt="Sponsor"/>
+</div>
+))}
+
+</div>
+
+<p className="more-sponsors">
+And even more...
+</p>
+
+</section>
+
+</div>
+
+)
 
 }

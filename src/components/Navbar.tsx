@@ -43,9 +43,9 @@ export default function Navbar() {
         <Link href="/team"><Users size={18}/> TEAM</Link>
 
         
-        <Link href="#achievements"><Users size={18}/> ACHIEVEMENTS</Link>
+        <Link href="/achievements"><Users size={18}/> ACHIEVEMENTS</Link>
 
-        <Link href="#events"><Calendar size={18}/> EVENTS</Link>
+        <Link href="/events"><Calendar size={18}/> EVENTS</Link>
 
         <Link href="/sponsors"><Handshake size={18}/> SPONSORS</Link>
 
