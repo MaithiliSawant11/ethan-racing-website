@@ -153,8 +153,8 @@ name:"ER 8.0",
 weight:"265 kg",
 images:[
 "/Cars/ER 8.0/ER8-1.jpg",
-"/Cars/ER 8.0/ER8-2.jpg",
-"/Cars/ER 8.0/ER8-3.jpg"
+"/Cars/ER 8.0/ER8-1.jpg",
+"/Cars/ER 8.0/ER8-1.jpg"
 ],
 specs:[
 ["Chassis","Carbon Reinforced Frame"],
@@ -173,8 +173,8 @@ name:"ER 9.0",
 weight:"260 kg",
 images:[
 "/Cars/ER 9.0/ER9-1.jpg",
-"/Cars/ER 9.0/ER9-2.jpg",
-"/Cars/ER 9.0/ER9-3.jpg"
+"/Cars/ER 9.0/ER9-1.jpg",
+"/Cars/ER 9.0/ER9-1.jpg"
 ],
 specs:[
 ["Chassis","Advanced Lightweight Frame"],

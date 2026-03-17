@@ -1,60 +1,126 @@
 "use client";
-
-import Navbar from "../components/Navbar";
+import { useState } from "react";
 import { useEffect } from "react";
+import Navbar from "../components/Navbar";
 
 export default function Home(){
+
+  const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+  const timer = setTimeout(() => {
+    setLoading(false);
+  }, 2000); // 2 seconds
+
+
+
+  return () => clearTimeout(timer);
+}, []);
+
 useEffect(()=>{
 
-  const elements=document.querySelectorAll(".about-block, .sponsor-card")
+const elements=document.querySelectorAll(".about-block, .sponsor-card")
 
-  const observer=new IntersectionObserver((entries)=>{
+const observer=new IntersectionObserver((entries)=>{
 
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add("show")
-      }
-    })
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show")
+}
+})
 
-  },{threshold:0.2})
+},{threshold:0.2})
 
-  elements.forEach(el=>observer.observe(el))
+elements.forEach(el=>observer.observe(el))
 
 },[])
 
-  return(
+  if (loading) {
+  return (
+    <div className="loader">
+      <h1>Ethan Racing</h1>
+      <p>Loading Experience...</p>
+    </div>
+  );
+}
 
-    <main>
+return(
 
-      <Navbar/>
+<main>
 
-      {/* HERO */}
+<Navbar/>
+
+{/* HERO */}
 
 <section className="hero">
 
-  <div className="hero-wrapper">
+  <div className="scroll-indicator">↓ Scroll</div>
 
-    <div className="hero-text">
+<div className="hero-content">
 
-      <h1 className="hero-title">
-        ETHAN RACING
-      </h1>
+<h1>Ethan Racing</h1>
 
-      <p className="hero-subtitle">
-        OFFICIAL FORMULA STUDENT RACING TEAM
-      </p>
+<p>Engineering Performance. Innovation. Speed.</p>
 
-    </div>
+<div className="hero-buttons">
 
-  </div>
+<a href="/team" className="hero-btn">
+Explore Team
+</a>
+
+<a href="/support" className="hero-btn-secondary">
+Support Us
+</a>
+
+</div>
+
+</div>
 
 </section>
 
+{/* HERO STATS */}
+
+<section className="hero-stats">
+
+<div className="stat">
+<h2>10+</h2>
+<p>Years Legacy</p>
+</div>
+
+<div className="stat">
+<h2>50+</h2>
+<p>Team Members</p>
+</div>
+
+<div className="stat">
+<h2>8</h2>
+<p>Formula Cars</p>
+</div>
+
+</section>
+
+{/* ACHIEVEMENTS SECTION */}
+
+<AchievementsLegacy/>
+
+<section className="team-gallery">
+  <h2>Our Team in Action</h2>
+
+  <div className="gallery-grid">
+    <img src="/g1.jpg"/>
+    <img src="/g2.jpg"/>
+    <img src="/g3.jpg"/>
+  </div>
+</section>
+
+{/* ABOUT SECTION */}
+
 <section className="about-section" id="about">
 
-  <div className="about-container">
+<div className="about-container">
 
-    {/* ABOUT VCET */}
+{/* ABOUT VCET */}
+
 
     <div className="about-block">
 
@@ -242,4 +308,86 @@ useEffect(()=>{
 
 }
 
- 
+ function AchievementsLegacy(){
+
+const [active,setActive] = useState("achievements")
+
+return(
+
+<section className="achievements-legacy">
+
+<h2 className="section-title">Our Journey</h2>
+
+<div className="legacy-tabs">
+
+<button
+className={active==="achievements" ? "active-tab":""}
+onClick={()=>setActive("achievements")}
+>
+Achievements
+</button>
+
+<button
+className={active==="legacy" ? "active-tab":""}
+onClick={()=>setActive("legacy")}
+>
+Team Legacy
+</button>
+
+</div>
+
+<div className="legacy-content">
+
+{active==="achievements" && (
+
+<div className="achievement-grid">
+
+<div className="achievement-card">
+<h3>Formula Bharat</h3>
+<p>Participation in national Formula Student competitions.</p>
+</div>
+
+<div className="achievement-card">
+<h3>Engineering Innovation</h3>
+<p>Designed and built a student Formula race car.</p>
+</div>
+
+<div className="achievement-card">
+<h3>Team Growth</h3>
+<p>Strong multidisciplinary engineering team.</p>
+</div>
+
+</div>
+
+)}
+
+{active==="legacy" && (
+
+<div className="legacy-grid">
+
+<div className="legacy-card">
+<h3>2014</h3>
+<p>Formation of Ethan Racing Team.</p>
+</div>
+
+<div className="legacy-card">
+<h3>First Prototype</h3>
+<p>Team built its first Formula Student car.</p>
+</div>
+
+<div className="legacy-card">
+<h3>Competitions</h3>
+<p>Participation in national motorsport events.</p>
+</div>
+
+</div>
+
+)}
+
+</div>
+
+</section>
+
+)
+
+}

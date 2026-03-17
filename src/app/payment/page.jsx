@@ -1,60 +1,61 @@
-"use client"
+"use client";
 
-import { useSearchParams } from "next/navigation"
-import { useRouter } from "next/navigation"
+import { useSearchParams, useRouter } from "next/navigation";
+import { Suspense } from "react";
 
-export default function PaymentPage(){
+/* ---------------- PAYMENT CONTENT ---------------- */
 
-const params = useSearchParams()
-const router = useRouter()
+function PaymentContent() {
+  const params = useSearchParams();
+  const router = useRouter();
 
-const name = params.get("name")
-const amount = params.get("amount")
+  const name = params.get("name");
+  const amount = params.get("amount");
 
-function handlePayment(){
+  function handlePayment() {
+    // Simulating payment success
 
-/*
-Later this will open Razorpay / payment gateway
-For now we simulate payment success
-*/
+    setTimeout(() => {
+      router.push("/payment-success");
+    }, 1500);
+  }
 
-setTimeout(()=>{
+  return (
+    <div className="payment-gateway">
 
-router.push("/payment-success")
+      <h1>Complete Your Payment</h1>
 
-},1500)
+      <p>Name: {name}</p>
+      <p>Amount: ₹{amount}</p>
 
+      <h3>Select Payment Method</h3>
+
+      <div className="payment-options">
+
+        <button onClick={handlePayment}>
+          UPI
+        </button>
+
+        <button onClick={handlePayment}>
+          Net Banking
+        </button>
+
+        <button onClick={handlePayment}>
+          Debit / Credit Card
+        </button>
+
+      </div>
+
+    </div>
+  );
 }
 
-return(
+/* ---------------- MAIN PAGE ---------------- */
 
-<div className="payment-gateway">
-
-<h1>Complete Your Payment</h1>
-
-<p>Name: {name}</p>
-<p>Amount: ₹{amount}</p>
-
-<h3>Select Payment Method</h3>
-
-<div className="payment-options">
-
-<button onClick={handlePayment}>
-UPI
-</button>
-
-<button onClick={handlePayment}>
-Net Banking
-</button>
-
-<button onClick={handlePayment}>
-Debit / Credit Card
-</button>
-
-</div>
-
-</div>
-
-)
-
+export default function PaymentPage() {
+  return (
+    <Suspense fallback={<div className="payment-loading">Loading Payment...</div>}>
+      <PaymentContent />
+    </Suspense>
+  );
 }
