@@ -2598,3 +2598,89 @@ img {
     padding: 40px 15px;
   }
 }
+
+/* NAVBAR BASE */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: black;
+  color: white;
+}
+
+.logo {
+  font-weight: bold;
+}
+
+/* DESKTOP LINKS */
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  transition: 0.3s;
+  z-index: 1000;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  margin: 15px 0;
+}
+
+.close-btn {
+  font-size: 22px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+}
+
+.sidebar::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 250px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+}

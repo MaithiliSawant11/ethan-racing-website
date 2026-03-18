@@ -24,21 +24,6 @@ export default function Navbar() {
         <Link href="#about"><Info size={18}/> ABOUT</Link>
 
         <Link href="/cars"><Car size={18}/> CARS</Link>
-{/* <li className="dropdown">
-  <span className="dropdown-title">Cars</span>
-
-  <ul className="dropdown-menu">
-    <li><Link href="/cars/er1">ER 1.0</Link></li>
-    <li><Link href="/cars/er2">ER 2.0</Link></li>
-    <li><Link href="/cars/er3">ER 3.0</Link></li>
-    <li><Link href="/cars/er4">ER 4.0</Link></li>
-    <li><Link href="/cars/er5">ER 5.0</Link></li>
-    <li><Link href="/cars/er6">ER 6.0</Link></li>
-    <li><Link href="/cars/er7">ER 7.0</Link></li>
-    <li><Link href="/cars/er8">ER 8.0</Link></li>
-    <li><Link href="/cars/er9">ER 9.0</Link></li>
-  </ul>
-</li> */}
 
         <Link href="/team"><Users size={18}/> TEAM</Link>
 
@@ -64,6 +49,26 @@ export default function Navbar() {
 
       <div className="menu-btn" onClick={()=>setMenuOpen(!menuOpen)}>
         ☰
+      </div>
+       {/* HAMBURGER ICON */}
+      <div className="hamburger" onClick={() => setMenuOpen(true)}>
+        ☰
+      </div>
+
+      {/* MOBILE SIDEBAR */}
+      <div className={`sidebar ${menuOpen ? "open" : ""}`}>
+
+        <div className="close-btn" onClick={() => setMenuOpen(false)}>
+          ✕
+        </div>
+
+        <Link href="/" onClick={()=>setMenuOpen(false)}>Home</Link>
+        <Link href="/team" onClick={()=>setMenuOpen(false)}>Team</Link>
+        <Link href="/achievements" onClick={()=>setMenuOpen(false)}>Achievements</Link>
+        <Link href="/events" onClick={()=>setMenuOpen(false)}>Events</Link>
+        <Link href="/support" onClick={()=>setMenuOpen(false)}>Support Us</Link>
+        <Link href="/contact" onClick={()=>setMenuOpen(false)}>Contact</Link>
+
       </div>
 
     </nav>
