@@ -2494,3 +2494,107 @@ button:hover {
   color: white;
   font-size: 18px;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+
+  /* HERO */
+  .hero {
+    height: auto;
+    padding: 80px 20px;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* HERO STATS */
+  .hero-stats {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  /* ABOUT SECTION */
+  .about-container {
+    flex-direction: column;
+  }
+
+  /* ACHIEVEMENTS */
+  .achievement-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .legacy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* GALLERY */
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* CONTACT PAGE */
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .contact-form,
+  .contact-info {
+    width: 100%;
+  }
+
+  /* FORM */
+  .form-row {
+    flex-direction: column;
+  }
+
+  /* PAYMENT PAGE */
+  .payment-options {
+    flex-direction: column;
+  }
+
+  /* SUPPORT PAGE */
+  .sponsor-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 40px 15px;
+  }
+}
