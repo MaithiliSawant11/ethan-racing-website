@@ -1,39 +1,36 @@
 export default {
   name: "car",
-  title: "Car",
+  title: "Cars",
   type: "document",
   fields: [
-
     {
       name: "name",
       title: "Car Name",
-      type: "string"
+      type: "string",
     },
-
     {
-      name: "weight",
-      title: "Weight",
-      type: "string"
+      name: "year",
+      title: "Year",
+      type: "number",
     },
-
     {
-      name: "engine",
-      title: "Engine",
-      type: "string"
+      name: "description",
+      title: "Description",
+      type: "text",
     },
-
     {
-      name: "topSpeed",
-      title: "Top Speed",
-      type: "string"
+      name: "image",
+      title: "Car Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
     },
-
     {
-      name: "images",
-      title: "Car Images",
+      name: "specs",
+      title: "Specifications",
       type: "array",
-      of: [{ type: "image" }]
-    }
-
-  ]
-}
+      of: [{ type: "string" }],
+    },
+  ],
+};

@@ -1,71 +1,113 @@
-"use client"
+"use client";
 
-import Hero from "@/components/Hero"
+import Hero from "@/components/Hero";
+import { useEffect, useState } from "react";
+import { client } from "@/sanity/lib/client";
 
-export default function EventsPage(){
+export default function EventsPage() {
 
-const events = [
+  const [events, setEvents] = useState<any[]>([]);
+  const [images, setImages] = useState<string[]>([]);
+  const [index, setIndex] = useState(0);
 
-{
-name:"Formula Bharat",
-location:"Coimbatore, India",
-description:"India's biggest Formula Student competition where teams design and race formula-style cars."
-},
+  useEffect(() => {
+    async function fetchData() {
+      const data = await client.fetch(`
+        *[_type == "event"]{
+          _id,
+          title,
+          description,
+          "images": images[].asset->url
+        }
+      `);
+      setEvents(data);
+    }
 
-{
-name:"Vehicle Testing",
-location:"VCET Campus",
-description:"Testing sessions for vehicle dynamics, braking, and endurance."
-},
+    fetchData();
+  }, []);
 
-{
-name:"Technical Workshops",
-location:"VCET",
-description:"Workshops conducted to train team members in automotive engineering and manufacturing."
-},
+  const open = (imgs: string[], i: number) => {
+    setImages(imgs);
+    setIndex(i);
+  };
 
-{
-name:"Design Reviews",
-location:"Team Ethan Pitstop",
-description:"Engineering discussions and design validation for upcoming race car models."
-}
+  const close = () => setImages([]);
 
-]
+  const next = () => {
+    setIndex((prev) => (prev + 1) % images.length);
+  };
 
-return(
+  const prev = () => {
+    setIndex((prev) =>
+      prev === 0 ? images.length - 1 : prev - 1
+    );
+  };
 
-<div>
+  return (
+    <div className="bg-black text-white">
 
-<Hero
-title="EVENTS"
-subtitle="Competitions and technical events of Ethan Racing"
-image="/hero-contact.jpg"
-/>
+      <Hero
+        title="EVENTS"
+        subtitle="Events & Competitions"
+        image="/hero-contact.jpg"
+      />
 
-<section className="events-container">
+      <section className="custom-section">
 
-<div className="event-cards">
+        {events.map((event) => (
 
-{events.map((event,index)=>(
+          <div key={event._id} className="custom-card">
 
-<div className="event-card" key={index}>
+            <h2 className="custom-title">{event.title}</h2>
 
-<h3>{event.name}</h3>
+            {event.images?.[0] && (
+              <img
+                src={event.images[0]}
+                className="main-img"
+                onClick={() => open(event.images, 0)}
+              />
+            )}
 
-<p className="event-location">{event.location}</p>
+            <p className="custom-desc">{event.description}</p>
 
-<p>{event.description}</p>
+            <div className="custom-gallery">
+              {event.images?.map((img: string, i: number) => (
+                <img
+                  key={i}
+                  src={img}
+                  onClick={() => open(event.images, i)}
+                />
+              ))}
+            </div>
 
-</div>
+          </div>
 
-))}
+        ))}
 
-</div>
+      </section>
 
-</section>
+      {/* MODAL */}
+      {images.length > 0 && (
+        <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50">
 
-</div>
+          <button
+            onClick={close}
+            className="absolute top-6 right-6 text-2xl"
+          >
+            ✕
+          </button>
 
-)
+          <img
+            src={images[index]}
+            className="max-h-[80vh] max-w-[90vw]"
+          />
 
+          <button onClick={prev} className="absolute left-6 text-3xl">‹</button>
+          <button onClick={next} className="absolute right-6 text-3xl">›</button>
+
+        </div>
+      )}
+
+    </div>
+  );
 }

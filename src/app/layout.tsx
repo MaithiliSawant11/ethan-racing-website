@@ -1,16 +1,30 @@
 import "./globals.css";
 import Navbar from "../components/Navbar";
-import { Orbitron } from "next/font/google";
 import Footer from "@/components/Footer";
+
+import { Orbitron, Poppins } from "next/font/google";
+
+/* FONTS */
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-poppins",
+});
+
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-orbitron",
+});
+
+/* METADATA */
 
 export const metadata = {
   title: "Ethan Racing VCET",
 };
 
-const orbitron = Orbitron({
-  subsets: ["latin"],
-  weight: ["400","600","700"]
-});
+/* LAYOUT */
 
 export default function RootLayout({
   children,
@@ -19,13 +33,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head> 
+      <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
-      <body className={orbitron.className}>
-        <Navbar/>
+
+      {/* APPLY BOTH FONTS HERE */}
+      <body className={`${poppins.variable} ${orbitron.variable}`}>
+
+        <Navbar />
+
         {children}
-        <Footer/>
+
+        <Footer />
+
       </body>
     </html>
   );
