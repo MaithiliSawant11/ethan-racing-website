@@ -3,30 +3,52 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-export default function TeamUI({ members }: any) {
+/* -------------------- TYPES -------------------- */
+type Member = {
+  _id: string;
+  name: string;
+  role: string;
+  domain: string;
+  year: string;
+  image: string;
+};
+
+export default function TeamUI({ members }: { members: Member[] }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [selectedMember, setSelectedMember] = useState<any>(null);
+  const [selectedMember, setSelectedMember] = useState<Member | null>(null);
 
-  const [selectedYear, setSelectedYear] = useState("");
-  const [groupedData, setGroupedData] = useState<any>({});
+  const [selectedYear, setSelectedYear] = useState<string>("");
+  const [groupedData, setGroupedData] = useState<
+    Record<string, Member[]>
+  >({});
 
-  // Extract years
-  const years = [...new Set(members.map((m: any) => m.year))];
+  /* -------------------- EXTRACT YEARS -------------------- */
+  const years: string[] = [
+    ...new Set(
+      members
+        .map((m) => m.year)
+        .filter((year): year is string => typeof year === "string")
+    ),
+  ];
 
-  // Default year
+  /* -------------------- DEFAULT YEAR -------------------- */
   useEffect(() => {
-    if (years.length) setSelectedYear(years[0]);
-  }, [members]);
+    if (years.length > 0) {
+      setSelectedYear(years[0]);
+    }
+  }, [years]);
 
-  // Group by domain after filtering by year
+  /* -------------------- GROUP BY DOMAIN -------------------- */
   useEffect(() => {
+    if (!selectedYear) return;
+
     const filtered = members.filter(
-      (m: any) => m.year === selectedYear
+      (m) => m.year === selectedYear
     );
 
-    const grouped: any = {};
+    const grouped: Record<string, Member[]> = {};
 
-    filtered.forEach((m: any) => {
+    filtered.forEach((m) => {
       if (!grouped[m.domain]) {
         grouped[m.domain] = [];
       }
@@ -36,7 +58,7 @@ export default function TeamUI({ members }: any) {
     setGroupedData(grouped);
   }, [selectedYear, members]);
 
-  // Cursor glow
+  /* -------------------- CURSOR GLOW -------------------- */
   useEffect(() => {
     const glow = document.getElementById("cursor-glow");
 
@@ -55,14 +77,14 @@ export default function TeamUI({ members }: any) {
     <div className="team-container">
       <div id="cursor-glow"></div>
 
-      {/* SIDEBAR BUTTON */}
+      {/* -------------------- SIDEBAR BUTTON -------------------- */}
       <div className="hamburger" onClick={() => setSidebarOpen(true)}>
         <div></div>
         <div></div>
         <div></div>
       </div>
 
-      {/* OVERLAY */}
+      {/* -------------------- OVERLAY -------------------- */}
       {sidebarOpen && (
         <div
           onClick={() => setSidebarOpen(false)}
@@ -75,11 +97,11 @@ export default function TeamUI({ members }: any) {
         />
       )}
 
-      {/* SIDEBAR */}
+      {/* -------------------- SIDEBAR -------------------- */}
       <div className={`team-sidebar ${sidebarOpen ? "open" : ""}`}>
         <button onClick={() => setSidebarOpen(false)}>✕ Close</button>
 
-        {years.map((y: string, index: number) => (
+        {years.map((y, index) => (
           <button
             key={index}
             onClick={() => {
@@ -93,11 +115,11 @@ export default function TeamUI({ members }: any) {
         ))}
       </div>
 
-      {/* MAIN */}
+      {/* -------------------- MAIN -------------------- */}
       <div className="team-main">
         <motion.h1
           style={{
-            color: "red",
+            color: "#e10600",
             fontSize: "48px",
             fontWeight: "bold",
             letterSpacing: "2px",
@@ -108,14 +130,14 @@ export default function TeamUI({ members }: any) {
           OUR TEAM
         </motion.h1>
 
-        {/* YEAR DROPDOWN */}
+        {/* -------------------- YEAR DROPDOWN -------------------- */}
         <div style={{ marginBottom: "20px" }}>
           <select
             value={selectedYear}
             onChange={(e) => setSelectedYear(e.target.value)}
             className="year-dropdown"
           >
-            {years.map((y: string, i: number) => (
+            {years.map((y, i) => (
               <option key={i} value={y}>
                 {y} Team
               </option>
@@ -123,11 +145,11 @@ export default function TeamUI({ members }: any) {
           </select>
         </div>
 
-        {/* DOMAIN CARDS */}
+        {/* -------------------- DOMAIN SECTIONS -------------------- */}
         <div className="team-sections">
-          {Object.keys(groupedData).map((domain: string, index: number) => (
+          {Object.keys(groupedData).map((domain, index) => (
             <motion.div
-              key={index}
+              key={domain}
               className="team-card"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -138,7 +160,7 @@ export default function TeamUI({ members }: any) {
               </h2>
 
               <div className="team-grid">
-                {groupedData[domain].map((m: any) => (
+                {groupedData[domain].map((m) => (
                   <div
                     key={m._id}
                     className="team-member"
@@ -155,7 +177,7 @@ export default function TeamUI({ members }: any) {
         </div>
       </div>
 
-      {/* MODAL */}
+      {/* -------------------- MODAL -------------------- */}
       {selectedMember && (
         <div
           className="team-modal"

@@ -1,4 +1,4 @@
-import { writeClient } from "@/sanity/lib/writeClient";
+import { client } from "@/sanity/lib/client";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
@@ -14,7 +14,7 @@ export async function POST(req: Request) {
       message: body.message,
     };
 
-    await writeClient.create(doc);
+    await client.create(doc);
 
     return NextResponse.json({ success: true });
   } catch (error) {
