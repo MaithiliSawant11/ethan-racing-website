@@ -6,4 +6,7 @@ export const client = createClient({
   apiVersion: "2024-01-01",
   token: process.env.SANITY_API_TOKEN, // 🔴 important
   useCdn: false,
+  // RAZORPAY_KEY_ID: process.env.RAZORPAY_KEY_ID,
+  // RAZORPAY_KEY_SECRET: process.env.RAZORPAY_KEY_SECRET,
+  // NEXT_PUBLIC_RAZORPAY_KEY_ID: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
 });

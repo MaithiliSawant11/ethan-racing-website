@@ -1,77 +1,82 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
-export default function DonatePage(){
+export default function DonatePage() {
+  const router = useRouter();
 
-const [form,setForm] = useState({
-name:"",
-email:"",
-phone:"",
-amount:""
-})
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    amount: "",
+  });
 
-function handleChange(e){
-setForm({...form,[e.target.name]:e.target.value})
-}
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-function handleSubmit(e){
+    router.push(
+      `/payment?name=${form.name}&email=${form.email}&amount=${form.amount}`
+    );
+  };
 
-e.preventDefault()
+  return (
+    <div className="sponsor-page">
+      
+      <h1>Support Ethan Racing</h1>
 
-window.location.href =
-`/payment?name=${form.name}&amount=${form.amount}`
+      <p>
+        Your contribution helps Ethan Racing design, manufacture, and compete
+        in Formula Student competitions. Every donation directly supports
+        innovation, teamwork, and engineering excellence.
+      </p>
 
-}
+      <h2>Why Donate?</h2>
 
-return(
+      <ul>
+        <li>Support student engineering innovation</li>
+        <li>Help build and race Formula Student cars</li>
+        <li>Encourage future motorsport talent</li>
+        <li>Be a part of our journey</li>
+      </ul>
 
-<div className="payment-page">
+      <h2>Donation Details</h2>
 
-<h1>Support Ethan Racing</h1>
+      <form className="sponsor-form" onSubmit={handleSubmit}>
 
-<form className="payment-form" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Full Name"
+          required
+          onChange={(e) =>
+            setForm({ ...form, name: e.target.value })
+          }
+        />
 
-<input
-type="text"
-name="name"
-placeholder="Full Name"
-onChange={handleChange}
-required
-/>
+        <input
+          type="email"
+          placeholder="Email Address"
+          required
+          onChange={(e) =>
+            setForm({ ...form, email: e.target.value })
+          }
+        />
 
-<input
-type="email"
-name="email"
-placeholder="Email"
-onChange={handleChange}
-required
-/>
+        <input
+          type="number"
+          placeholder="Donation Amount (₹)"
+          required
+          onChange={(e) =>
+            setForm({ ...form, amount: e.target.value })
+          }
+        />
 
-<input
-type="tel"
-name="phone"
-placeholder="Phone"
-onChange={handleChange}
-required
-/>
+        <button type="submit">
+          Proceed to Payment
+        </button>
 
-<input
-type="number"
-name="amount"
-placeholder="Donation Amount (₹)"
-onChange={handleChange}
-required
-/>
+      </form>
 
-<button type="submit">
-Proceed to Payment
-</button>
-
-</form>
-
-</div>
-
-)
-
+    </div>
+  );
 }
