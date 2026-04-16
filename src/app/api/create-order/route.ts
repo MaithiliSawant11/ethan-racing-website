@@ -1,19 +1,35 @@
 import Razorpay from "razorpay";
 import { NextResponse } from "next/server";
 
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID!,
-  key_secret: process.env.RAZORPAY_KEY_SECRET!,
-});
-
 export async function POST(req: Request) {
-  const { amount } = await req.json();
+  try {
+    // ✅ CHECK ENV FIRST
+    if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
+      return NextResponse.json(
+        { error: "Razorpay keys missing" },
+        { status: 500 }
+      );
+    }
 
-  const order = await razorpay.orders.create({
-    amount: amount * 100, // paise
-    currency: "INR",
-    receipt: "receipt_" + Date.now(),
-  });
+    // ✅ CREATE INSTANCE INSIDE FUNCTION (VERY IMPORTANT)
+    const razorpay = new Razorpay({
+      key_id: process.env.RAZORPAY_KEY_ID,
+      key_secret: process.env.RAZORPAY_KEY_SECRET,
+    });
 
-  return NextResponse.json(order);
+    const { amount } = await req.json();
+
+    const order = await razorpay.orders.create({
+      amount: Number(amount) * 100,
+      currency: "INR",
+    });
+
+    return NextResponse.json(order);
+
+  } catch (err: any) {
+    return NextResponse.json(
+      { error: err.message },
+      { status: 500 }
+    );
+  }
 }
