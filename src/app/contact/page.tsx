@@ -37,15 +37,15 @@ return(
 <div className="contact-cards">
 
 <div className="contact-card">
-<h3>Faculty Incharge</h3>
-<p>Phone : +91 XXXXX XXXXX</p>
-<p>Email : faculty@ethanracing.com</p>
+<h3><p>Captain: Sankalp Jadhav</p></h3>
+<p>Phone : +91 80107 06299 </p>
+{/* <p>Email : faculty@ethanracing.com</p> */}
 </div>
 
 <div className="contact-card">
-<h3>Faculty Advisory</h3>
-<p>Phone : +91 XXXXX XXXXX</p>
-<p>Email : advisory@ethanracing.com</p>
+<h3><p>Sahil Shah</p></h3>
+<p>Phone : +91 90218 45762</p>
+{/* <p>Email : advisory@ethanracing.com</p> */}
 </div>
 
 <div className="contact-card">

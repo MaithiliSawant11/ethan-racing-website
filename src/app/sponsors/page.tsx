@@ -101,32 +101,83 @@ export default async function SponsorsPage() {
             </div>
           ))}
 
-        <div className="sponsor-benefits">
+<div className="sponsor-benefits">
 
-  <h2 className="benefits-title">Why Sponsor Ethan Racing?</h2>
+  {/* HEADER */}
+  <h2 className="benefits-title">Why Join Ethan Racing?</h2>
 
+  <p className="benefits-subtitle">
+    One Team. One Machine. One Goal.
+  </p>
+
+  <p className="benefits-description">
+    Ethan Racing operates like a professional racing organization where
+    Technical, Electrical, Software, and Business domains work in perfect synchronization.
+  </p>
+
+  {/* PILLARS */}
   <div className="benefits-grid">
 
     <div className="benefit-card">
-      <h3>Brand Visibility</h3>
-      <p>Your logo on our race car and team apparel.</p>
+      <h3>Structural & Mechanical Excellence</h3>
+      <p>
+        Focus on chassis, suspension, braking systems, and aerodynamics.
+      </p>
+      <span>Tools: SolidWorks, Ansys</span>
     </div>
 
     <div className="benefit-card">
-      <h3>National Exposure</h3>
-      <p>Presence in Formula Student competitions across India.</p>
+      <h3>Electric Powertrain</h3>
+      <p>
+        Battery systems, BMS, and motor controller integration.
+      </p>
+      <span>Tools: MATLAB, Altium</span>
     </div>
 
     <div className="benefit-card">
-      <h3>Social Media Reach</h3>
-      <p>Promotion across our digital platforms.</p>
+      <h3>Intelligence & Systems</h3>
+      <p>
+        Telemetry, embedded systems, and sensor integration.
+      </p>
+      <span>Tools: C/C++, IoT</span>
     </div>
 
     <div className="benefit-card">
-      <h3>Engineering Talent</h3>
-      <p>Connect with skilled and passionate engineers.</p>
+      <h3>Business & Strategy</h3>
+      <p>
+        Sponsorships, branding, finance, and operations.
+      </p>
+      <span>Tools: Marketing, Project Management</span>
     </div>
 
+  </div>
+
+  {/* ADVANTAGE */}
+  <div className="benefits-advantage">
+
+    <h3>The Professional Advantage</h3>
+
+    <ul>
+      <li>
+        Interdisciplinary learning across mechanical, electrical, and software systems
+      </li>
+      <li>
+        Industry-level standards inspired by Formula Student and global teams
+      </li>
+      <li>
+        Real-world hands-on experience beyond classroom learning
+      </li>
+    </ul>
+
+  </div>
+
+  {/* MISSION */}
+  <div className="benefits-mission">
+    <p>
+      "Every bolt tightened, every line of code written, every circuit soldered,
+      and every sponsorship secured moves us closer to the finish line.
+      We don’t just build a car — we build a legacy of engineering excellence."
+    </p>
   </div>
 
 </div>

@@ -2981,7 +2981,7 @@ h1, h2 {
 }
 
 .team-title {
-  font-size: 22px;
+  font-size: 40px;
   color: #ddd; /* soft white */
   letter-spacing: 1px;
 }
@@ -3021,8 +3021,8 @@ h1, h2 {
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 40px;
-  margin-top: 40px;
+  gap: 8px;
+  margin-top: 10px;
 }
 
 .team-sidebar button {
@@ -3031,13 +3031,13 @@ h1, h2 {
 
 .team-sidebar button:hover {
   transform: translateX(10px);
-  color: red;
+  color: rgb(157, 26, 26);
 }
 
 /* MEMBER */
 .team-member img {
-  width: 120px;
-  height: 120px;
+  width: 800px;
+  height: 450px;
   border-radius: 12px;
   object-fit: cover;
   margin: auto;
@@ -3131,7 +3131,7 @@ h1, h2 {
 .events-title {
   text-align: center;
   color: #ff0000;
-  font-size: 40px;
+  font-size: 60px;
   font-weight: 800;
 }
 
@@ -3145,7 +3145,7 @@ h1, h2 {
 .events-tabs button {
   background: #111;
   color: white;
-  padding: 10px 20px;
+  padding: 20px 30px;
   border: none;
   cursor: pointer;
 }
@@ -3157,7 +3157,7 @@ h1, h2 {
 .events-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 20px;
+  gap: 10px;
 }
 
 .event-card {
@@ -3167,8 +3167,8 @@ h1, h2 {
 }
 
 .event-card img {
-  width: 100%;
-  height: 180px;
+  width: 450px;
+  height: 400px;
   object-fit: cover;
 }
 
@@ -3304,8 +3304,8 @@ body {
 }
 
 .custom-card img.main-img {
-  width: 100%;
-  height: 350px;
+  width: 800px;
+  height: 450px;
   object-fit: contain;
   margin: 10px auto;
   display: block;
@@ -3315,7 +3315,7 @@ body {
 }
 
 .custom-title {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 600;
 }
 
@@ -3365,4 +3365,131 @@ body {
 
 .custom-tabs .active {
   background: #e10600;
+}
+
+/* Subtitle */
+.benefits-subtitle {
+  text-align: center;
+  color: #e10600;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Description */
+.benefits-description {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  opacity: 0.8;
+}
+
+/* Grid already exists — keep it */
+
+/* Card upgrade */
+.benefit-card span {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+/* Advantage section */
+.benefits-advantage {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.benefits-advantage ul {
+  list-style: none;
+  padding: 0;
+}
+
+.benefits-advantage li {
+  margin: 10px 0;
+  opacity: 0.85;
+}
+
+/* Mission */
+.benefits-mission {
+  margin-top: 50px;
+  text-align: center;
+  font-style: italic;
+  font-size: 16px;
+  border-left: 3px solid #e10600;
+  padding-left: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.team-hero {
+  position: relative;
+  height: 60vh;
+  overflow: hidden;
+}
+
+.team-hero-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+}
+
+.team-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+}
+
+.team-hero {
+  position: relative;
+
+  width: 100vw;                 /* FULL WIDTH */
+  height: 60vh;
+
+  margin-left: calc(-50vw + 50%); /* BREAK OUT OF CONTAINER */
+  
+  background: url("/team-hero.jpg") center/cover no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+/* Overlay */
+.team-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* Content */
+.team-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+}
+
+/* Heading */
+.team-hero-content h1 {
+  font-size: 60px;
+  color: #e10600;
+  letter-spacing: 3px;
+}
+
+/* Subtitle */
+.team-hero-content p {
+  margin-top: 10px;
+  font-size: 18px;
+  opacity: 0.85;
 }

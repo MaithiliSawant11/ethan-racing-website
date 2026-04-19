@@ -76,6 +76,28 @@ export default function TeamUI({ members }: { members: Member[] }) {
   return (
     <div className="team-container">
       <div id="cursor-glow"></div>
+ 
+      {/* -------------------- HERO SECTION -------------------- */}
+      {/* <div className="team-hero">
+  
+  <img
+    src="/team-hero.jpg"
+    alt="Team Hero"
+    className="team-hero-img"
+  />
+
+  <div className="team-hero-overlay"></div>
+
+  <motion.div
+    className="team-hero-content"
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+  >
+    <h1>OUR TEAM</h1>
+    <p>Driven by Passion. Engineered for Performance.</p>
+  </motion.div>
+
+</div> */}
 
       {/* -------------------- SIDEBAR BUTTON -------------------- */}
       <div className="hamburger" onClick={() => setSidebarOpen(true)}>
@@ -117,20 +139,8 @@ export default function TeamUI({ members }: { members: Member[] }) {
 
       {/* -------------------- MAIN -------------------- */}
       <div className="team-main">
-        <motion.h1
-          style={{
-            color: "#e10600",
-            fontSize: "48px",
-            fontWeight: "bold",
-            letterSpacing: "2px",
-          }}
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          OUR TEAM
-        </motion.h1>
 
-        {/* -------------------- YEAR DROPDOWN -------------------- */}
+        {/* YEAR DROPDOWN */}
         <div style={{ marginBottom: "20px" }}>
           <select
             value={selectedYear}
@@ -145,7 +155,7 @@ export default function TeamUI({ members }: { members: Member[] }) {
           </select>
         </div>
 
-        {/* -------------------- DOMAIN SECTIONS -------------------- */}
+        {/* DOMAIN SECTIONS */}
         <div className="team-sections">
           {Object.keys(groupedData).map((domain, index) => (
             <motion.div
@@ -156,7 +166,7 @@ export default function TeamUI({ members }: { members: Member[] }) {
               transition={{ delay: index * 0.1 }}
             >
               <h2 className="team-title">
-                {domain} <span>Team</span>
+                {/* {domain}*/} <span>Team</span> 
               </h2>
 
               <div className="team-grid">
